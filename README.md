@@ -1,4 +1,4 @@
-            VLSI PHYSICAL DESIGN       
+                                                        VLSI PHYSICAL DESIGN       
             Workshop contents
             1.Intro to Opensource EDA tool(OPENLANE) and PDK(skywater130nm)
             2.Floorplanning and Power planning
