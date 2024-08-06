@@ -1,4 +1,11 @@
-            VLSI PHYSICAL DESIGN           
+            VLSI PHYSICAL DESIGN       
+            Workshop contents
+            1.Intro to Opensource EDA tool(OPENLANE) and PDK(skywater130nm)
+            2.Floorplanning and Power planning
+            3.Cell design using Magic and Ngspice
+            4.Pre layout timing analysis,importance of good clock trees(min skew)
+            5.Final steps for RTL2GDS using tritonRoute and openSTA
+            
 
  DAY 1: Inception of open source EDA, openLANE, sky130 PDK
  How to talk to computers:
