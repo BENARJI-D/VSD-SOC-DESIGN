@@ -13,3 +13,4 @@
      
      Physical design is focussing on the macro inside the processor and also block level design.
   ![image](https://github.com/user-attachments/assets/7070d7dd-3df0-4e35-ace3-21800b3bf415)
+ The above image shows a PCB on which different component placed.
