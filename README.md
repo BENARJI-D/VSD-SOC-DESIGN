@@ -31,5 +31,7 @@ SIMPLIFIED RTL TO GDS FLOW
 ![WhatsApp Image 2024-08-20 at 10 52 11_f64999f6](https://github.com/user-attachments/assets/265f2f4e-d02b-4909-aa0f-98fed32dc057)
 
 OPENLANE ASIC FLOW
+             
              Open LANE is an open-source EDA toolchain designed for digital ASIC design and optimization, it has open everything SOC’S,OPEN PDK’S,OPEN EDA,OPEN RTL. It integrates various tools and flows to streamline the design process from RTL to GDSII. It produce clean GDSII with no human intervention. 
+             
 ![image](https://github.com/user-attachments/assets/d0c065a2-581a-41d3-b3f9-207925c642
