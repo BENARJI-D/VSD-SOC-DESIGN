@@ -38,15 +38,27 @@ OPENLANE ASIC FLOW
 
                                                             DAY-1 LAB
 Picorv32a design synthesis using OPENLANE flow
+
 #Change Directory to openlane directory
+
 cd Desktop/work/tools/openlane_working_dir/openlane
+
 #To invoke openlane flow use command docker
+
 docker
+
 #setting openlane flow to be interactive mode
+
 ./flow.tcl -interactive
+
 #input the openlane require package
+
 package require openlane 0.9
+
 #Now prep the design for the openlane flow
+
 prep -design picorv32a
+
 #run the synthesis using the command
+
 run_synthesis
