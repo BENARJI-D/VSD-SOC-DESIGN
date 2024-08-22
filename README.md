@@ -134,22 +134,27 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
     #Command for placement run in openlane flow
     
     run_placement
-    
-    ![image](https://github.com/user-attachments/assets/52821499-3278-484e-9e90-1b5ed26d4058)
-    
-    ![image](https://github.com/user-attachments/assets/694507ef-af62-45d0-9411-6559a60436ac)
-    
+   ![image](https://github.com/user-attachments/assets/d8acc91e-f91d-4315-9202-bb3aec0ca737)
+
+   ![image](https://github.com/user-attachments/assets/682e47d4-4b29-464b-910c-de18e66671bb)
+
+   
+
+        
     #Set directory path placement def file containing directory
      cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
     #Command for loading placement def in Magic tool
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+
      Screenshot of floorplan in magic tool
     ![image](https://github.com/user-attachments/assets/1b1e9976-941f-4db0-9259-dc2de13033bf)
 
                                                 DAY-3
       SPICEDECK creation for CMOS Inverter
-    ![image](https://github.com/user-attachments/assets/80ae0cf9-ff74-4490-aa81-9a28a888b012)
-    ![image](https://github.com/user-attachments/assets/9c4ada1d-9393-4030-8033-01462fe97a1a)
+
+      ![image](https://github.com/user-attachments/assets/dcb66b27-607e-45f5-83f9-4cd88b078cfe)
+
+    
     i)Cloning std cell design from github repository
       # Change directory to openlane
       cd Desktop/work/tools/openlane_working_dir/openlane
@@ -164,12 +169,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
     # Command to open custom inverter layout in magic
     magic -T sky130A.tech sky130_inv.mag &
-    ![image](https://github.com/user-attachments/assets/abff7329-74c6-4a6a-8cd5-51e2098bf78b)
-    ![image](https://github.com/user-attachments/assets/b7496dd3-036f-4f57-acd6-5b40ddc061d7)
-    ![image](https://github.com/user-attachments/assets/112ee7d9-27da-4ef1-ad9e-a73f700e350e)
-    ![image](https://github.com/user-attachments/assets/e44fe275-96ba-43b4-a55e-0c3cd3419642)
-    ![image](https://github.com/user-attachments/assets/186014b5-9a83-4af3-8e5a-758b3a7ad627)
-    ![image](https://github.com/user-attachments/assets/970d1d18-f139-48a7-bb0d-fa226e74c63d)
+     
     
     
 
