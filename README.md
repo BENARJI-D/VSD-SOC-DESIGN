@@ -129,9 +129,12 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
     ![image](https://github.com/user-attachments/assets/9a3193e0-85f1-4a35-af0c-e433d1d14ace)
     #Command for placement run in openlane flow
     run_placement
+    
     <img width="414" alt="image" src="https://github.com/user-attachments/assets/2ba246cb-3fbb-4b2f-abfb-15e6782d7341">
+
     
     <img width="292" alt="image" src="https://github.com/user-attachments/assets/c301d027-6152-4dfb-bd2f-359fbf94b1c7">
+
 
     <img width="383" alt="image" src="https://github.com/user-attachments/assets/c182640d-978d-4d28-89d2-222945e335dd">
 
