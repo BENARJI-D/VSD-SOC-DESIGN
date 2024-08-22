@@ -144,11 +144,14 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
     #Set directory path placement def file containing directory
      cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
     #Command for loading placement def in Magic tool
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+    magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read 
+     ../../tmp/merged.lef def read picorv32a.placement.def &
 
      Screenshot of floorplan in magic tool
-    ![image](https://github.com/user-attachments/assets/1b1e9976-941f-4db0-9259-dc2de13033bf)
+     
+  ![image](https://github.com/user-attachments/assets/41e84a87-a1f0-4749-be40-83c861d967b3)
 
+  
                                                 DAY-3
       SPICEDECK creation for CMOS Inverter
 
