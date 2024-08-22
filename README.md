@@ -134,9 +134,11 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
     #Command for placement run in openlane flow
     
     run_placement
+    
     ![image](https://github.com/user-attachments/assets/52821499-3278-484e-9e90-1b5ed26d4058)
     
     ![image](https://github.com/user-attachments/assets/694507ef-af62-45d0-9411-6559a60436ac)
+    
     #Set directory path placement def file containing directory
      cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
     #Command for loading placement def in Magic tool
