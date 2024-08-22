@@ -154,11 +154,11 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
   
                                                 DAY-3
       SPICEDECK creation for CMOS Inverter
+![image](https://github.com/user-attachments/assets/c7e7fb1a-4011-46b0-a3a4-eeab833247b1)
+![image](https://github.com/user-attachments/assets/b47ab06d-ec33-414b-a3e5-1e9870875068)
 
-      ![image](https://github.com/user-attachments/assets/dcb66b27-607e-45f5-83f9-4cd88b078cfe)
 
-    
-    i)Cloning std cell design from github repository
+i)Cloning std cell design from github repository
       # Change directory to openlane
       cd Desktop/work/tools/openlane_working_dir/openlane
       #Clone reposirory with std cell design
@@ -172,6 +172,11 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
 
     # Command to open custom inverter layout in magic
     magic -T sky130A.tech sky130_inv.mag &
+
+    ![image](https://github.com/user-attachments/assets/d6894a84-a5ac-4d9f-90e8-5d5b3fd7b3d0)
+
+
+    
      
     
     
