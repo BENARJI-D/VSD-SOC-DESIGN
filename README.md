@@ -62,11 +62,13 @@ cd Desktop/work/tools/openlane_working_dir/openlane
 #run the synthesis using the command
 
   run_synthesis
+  
 ![image](https://github.com/user-attachments/assets/7841cf96-dd0e-475a-a154-4b80d0ea3c75)
 ![image](https://github.com/user-attachments/assets/85a50c62-00f6-4a58-8c57-e1352b432094)
 ![image](https://github.com/user-attachments/assets/81f8927c-0ab7-4d74-ac94-a630fb1cee56)
      FLOPS Ratio
 Scereenshots of Synthesis report with NO.of Cells,No.FlipFlops
+
 ![image](https://github.com/user-attachments/assets/d3567bc0-817f-4aa3-a7b2-6e74dba13d2c)
 
 ![image](https://github.com/user-attachments/assets/2acc4db1-5dc8-4278-85e0-2687f4d81b1f)
@@ -75,7 +77,8 @@ Flop Ratio=(No.of D-FF/No.of cells)*100
  D-Flop Ratio  =1613/14876*100=10.8429%
  
                        DAY-2
-FLOORPLAN run using OPENLANE flow
+                       
+    i)FLOORPLAN run using OPENLANE flow
 #To invoke openlane flow use command docker
 
   docker
@@ -100,6 +103,44 @@ FLOORPLAN run using OPENLANE flow
   run_floorplan
 
 ![image](https://github.com/user-attachments/assets/e551e518-a6a2-4cf0-9cc1-ac4fbc78175f)
+ ii)Die area calculation for floorplan def
+ 
+ Screen shot of Floorplan def
+ ![image](https://github.com/user-attachments/assets/fb9e4218-7a9f-4057-84b8-31480a508de5)
+  Fom def
+   1000 unit distance=1 micron
+   Die width=660685/1000=660.685 microns
+   Die height=671405/1000=671.405 microns
+   Die area=660.685*671.405=443587.212 microns square
+iii)Magic tool to visualize floorplan using floorplan def file
+
+#Command to set the directory to run magic toolc
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/floorplan/
+
+#Command for loading floorplan def in Magic tool
+    magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+    Screen shot of Floorplan in Magic tool
+    ![image](https://github.com/user-attachments/assets/e0eacc86-7407-4e78-9e6d-63b109647c87)
+    Decap cells
+    ![image](https://github.com/user-attachments/assets/8c6f9492-976d-4788-ae14-0a4e387a773f)
+    Equidistant tap cells
+    ![image](https://github.com/user-attachments/assets/cc4c03d6-2a55-4fb7-8482-18ca16fd6e12)
+    Standard cells unplaced present at bootom left corner
+    ![image](https://github.com/user-attachments/assets/9a3193e0-85f1-4a35-af0c-e433d1d14ace)
+    #Command for placement run in openlane flow
+    run_placement
+    <img width="414" alt="image" src="https://github.com/user-attachments/assets/2ba246cb-3fbb-4b2f-abfb-15e6782d7341">
+    
+    <img width="292" alt="image" src="https://github.com/user-attachments/assets/c301d027-6152-4dfb-bd2f-359fbf94b1c7">
+
+    <img width="383" alt="image" src="https://github.com/user-attachments/assets/c182640d-978d-4d28-89d2-222945e335dd">
+
+
+
+
+
+ 
+
 
 
 
