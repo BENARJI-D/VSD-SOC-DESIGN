@@ -188,6 +188,94 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
 ![image](https://github.com/user-attachments/assets/61a974cd-60e7-4122-a312-2a8f51aaa223)
 ![image](https://github.com/user-attachments/assets/ba57d33b-ef96-4586-b86c-805f66c663b7)
 
+ii)Inverter spice extraction from magic
+  In tkcon window use the following commands 
+   pwd
+ #Extraction command to extract to .ext format
+  extract all
+
+ #enable the parasitic extraction before converting ext to 
+ spice
+  parasitic extraction also
+  ext2spice cthresh 0 rthresh 0
+
+ #Convert ext to spice
+  ext2spice
+
+  ![WhatsApp Image 2024-08-04 at 12 54 59_485f60f9](https://github.com/user-attachments/assets/95dece16-439d-40e8-8a26-5d9ecfe13791)
+![WhatsApp Image 2024-08-04 at 14 25 16_bc5e6a5c](https://github.com/user-attachments/assets/b5e2bba8-40d9-4702-bc84-6a03da4d85c3)
+
+iii)ngspice simulation
+#Command for loading spice file in ngspice simulation
+ngspice sky130_inv.spice
+
+#Spice file loaded,Now plot the graph uning the command
+plot y vs time a
+![image](https://github.com/user-attachments/assets/7e046260-9188-41ed-8341-95651e68c302)
+![image](https://github.com/user-attachments/assets/caddad6b-52bf-4520-a79c-32a82a928455)
+![image](https://github.com/user-attachments/assets/4fc3fb83-5702-4f91-aa22-1db5f7bd8d6b)
+![image](https://github.com/user-attachments/assets/c9e83dd6-4064-4720-b931-8eeeaf35c6c8)
+![image](https://github.com/user-attachments/assets/31d2c887-671a-495a-939a-83e46bed4bf7)
+![image](https://github.com/user-attachments/assets/706cc34f-ddeb-42c5-b407-e3ab54edfdc9)
+
+iv)Sky 130 PDK intro,Finding and fixing problems for DRC
+
+#Change the directory to home directory
+
+cd
+
+#Command for downloading lab files
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+#command for extraction of lab files
+tar xfz drc_tests.tgz
+
+#Change directory into the lab files directory
+cd drc_tests
+
+#List all files present in the current directory
+ls -ltr
+
+#Command to view .magicrc file
+gvim .magicrc
+
+# Command to open magic tool in better graphics
+magic -d XR &
+
+![image](https://github.com/user-attachments/assets/cf328f28-369b-4627-ac40-0866c731d76c)
+![image](https://github.com/user-attachments/assets/37343b16-5a1c-44aa-8cc3-dee8d31c503d)
+![image](https://github.com/user-attachments/assets/acc6b6c3-a5f9-4cf4-8154-cdd8f2a7164e)
+![image](https://github.com/user-attachments/assets/4099ab3e-be1a-4f8f-934e-cb75bb52f444)
+![image](https://github.com/user-attachments/assets/dcf55f60-8fbf-462a-84f8-67d95a3e41b2)
+![image](https://github.com/user-attachments/assets/2ed57216-3a9f-4c24-b2c0-d801678f3c36)
+![image](https://github.com/user-attachments/assets/052a1a13-e3ba-4c88-be63-069a128eef87)
+![image](https://github.com/user-attachments/assets/c38fa5d0-1ae1-470c-bb3b-5cc7a0d0a45d)
+![image](https://github.com/user-attachments/assets/eff0a139-477d-44a9-b3be-620ee2477b9a)
+![image](https://github.com/user-attachments/assets/bef26b99-0097-41b6-9892-9bf3ae617a04)
+![image](https://github.com/user-attachments/assets/847f67b5-32f7-4396-b3f6-e2d4c37c6c53)
+![image](https://github.com/user-attachments/assets/5e1235ea-b96e-482e-b4c0-a4f3564a561d)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+  
+
 
 
 
