@@ -65,8 +65,47 @@ cd Desktop/work/tools/openlane_working_dir/openlane
 ![image](https://github.com/user-attachments/assets/7841cf96-dd0e-475a-a154-4b80d0ea3c75)
 ![image](https://github.com/user-attachments/assets/85a50c62-00f6-4a58-8c57-e1352b432094)
 ![image](https://github.com/user-attachments/assets/81f8927c-0ab7-4d74-ac94-a630fb1cee56)
+     FLOPS Ratio
+Scereenshots of Synthesis report with NO.of Cells,No.FlipFlops
+![image](https://github.com/user-attachments/assets/d3567bc0-817f-4aa3-a7b2-6e74dba13d2c)
+
+![image](https://github.com/user-attachments/assets/2acc4db1-5dc8-4278-85e0-2687f4d81b1f)
+
+Flop Ratio=(No.of D-FF/No.of cells)*100
+ D-Flop Ratio  =1613/14876*100=10.8429%
+ 
+                       DAY-2
+FLOORPLAN run using OPENLANE flow
+#To invoke openlane flow use command docker
+
+  docker
+
+#setting openlane flow to be interactive mode
+
+  ./flow.tcl -interactive
+
+#input the openlane require package
+
+  package require openlane 0.9
+
+#Now prep the design for the openlane flow
+
+  prep -design picorv32a
+
+#run the synthesis using the command
+
+  run_synthesis
+#run floorplan using this command
+
+  run_floorplan
+
+![image](https://github.com/user-attachments/assets/e551e518-a6a2-4cf0-9cc1-ac4fbc78175f)
 
 
+
+
+ 
+ 
 
 
 
