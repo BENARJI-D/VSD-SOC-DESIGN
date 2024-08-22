@@ -76,7 +76,7 @@ Scereenshots of Synthesis report with NO.of Cells,No.FlipFlops
 Flop Ratio=(No.of D-FF/No.of cells)*100
  D-Flop Ratio  =1613/14876*100=10.8429%
  
-                       DAY-2
+                                                       DAY-2 LAB
                        
     i)FLOORPLAN run using OPENLANE flow
 #To invoke openlane flow use command docker
@@ -127,16 +127,64 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
     ![image](https://github.com/user-attachments/assets/cc4c03d6-2a55-4fb7-8482-18ca16fd6e12)
     Standard cells unplaced present at bootom left corner
     ![image](https://github.com/user-attachments/assets/9a3193e0-85f1-4a35-af0c-e433d1d14ace)
+    After floorplan step is completed,next step is placement
+    It consists of 2 stages 
+    1.Global placement 
+    2.Deatailed placement
     #Command for placement run in openlane flow
+    
     run_placement
+    ![image](https://github.com/user-attachments/assets/52821499-3278-484e-9e90-1b5ed26d4058)
     
-    <img width="414" alt="image" src="https://github.com/user-attachments/assets/2ba246cb-3fbb-4b2f-abfb-15e6782d7341">
+    ![image](https://github.com/user-attachments/assets/694507ef-af62-45d0-9411-6559a60436ac)
+    #Set directory path placement def file containing directory
+     cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
+    #Command for loading placement def in Magic tool
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+     Screenshot of floorplan in magic tool
+    ![image](https://github.com/user-attachments/assets/1b1e9976-941f-4db0-9259-dc2de13033bf)
+
+                                                DAY-3
+      SPICEDECK creation for CMOS Inverter
+    ![image](https://github.com/user-attachments/assets/80ae0cf9-ff74-4490-aa81-9a28a888b012)
+    ![image](https://github.com/user-attachments/assets/9c4ada1d-9393-4030-8033-01462fe97a1a)
+    i)Cloning std cell design from github repository
+      # Change directory to openlane
+      cd Desktop/work/tools/openlane_working_dir/openlane
+      #Clone reposirory with std cell design
+      git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+     # open std cell repo directory
+     cd vsdstdcelldesign
+
+     # Copy magic tech file to the repo directory for easy access
+     cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+    # Command to open custom inverter layout in magic
+    magic -T sky130A.tech sky130_inv.mag &
+    ![image](https://github.com/user-attachments/assets/abff7329-74c6-4a6a-8cd5-51e2098bf78b)
+    ![image](https://github.com/user-attachments/assets/b7496dd3-036f-4f57-acd6-5b40ddc061d7)
+    ![image](https://github.com/user-attachments/assets/112ee7d9-27da-4ef1-ad9e-a73f700e350e)
+    ![image](https://github.com/user-attachments/assets/e44fe275-96ba-43b4-a55e-0c3cd3419642)
+    ![image](https://github.com/user-attachments/assets/186014b5-9a83-4af3-8e5a-758b3a7ad627)
+    ![image](https://github.com/user-attachments/assets/970d1d18-f139-48a7-bb0d-fa226e74c63d)
+    
+    
+
 
     
-    <img width="292" alt="image" src="https://github.com/user-attachments/assets/c301d027-6152-4dfb-bd2f-359fbf94b1c7">
 
 
-    <img width="383" alt="image" src="https://github.com/user-attachments/assets/c182640d-978d-4d28-89d2-222945e335dd">
+    
+
+    
+
+    
+
+
+    
+    
+
 
 
 
