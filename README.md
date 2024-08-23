@@ -486,7 +486,6 @@ report_checks -fields {net cap slew input_pins} -digits 4
   ![image](https://github.com/user-attachments/assets/37e51ec3-f9b2-4cd2-918b-995566df8ba6)
 ![image](https://github.com/user-attachments/assets/d97656bd-21f9-4c06-a045-31687625eeea)
 ![image](https://github.com/user-attachments/assets/3d89b434-67a0-4a31-a099-683463c6665b)
-![image](https://github.com/user-attachments/assets/00b70244-3c94-4259-a867-48b42977d383)
 ![image](https://github.com/user-attachments/assets/a8729cb9-6e11-4834-9438-6593a7c9ba49)
 ![image](https://github.com/user-attachments/assets/fde43744-7223-4e13-afc0-2d70d8fe6193)
  
@@ -494,9 +493,10 @@ report_checks -fields {net cap slew input_pins} -digits 4
        
 vii)replace old netlist with new netlist and do the PnR flow
       but we need to copy the old netlist.To replace old netlist with new netlist to PnR flow,use write_verilog command
-      
-      ![image](https://github.com/user-attachments/assets/dba7c7f4-8b67-493e-b2e6-6157a9f9f3ca)
 
+![image](https://github.com/user-attachments/assets/003ab086-d012-4661-bfb3-0115e9e5bb0b)
+
+      
 #Command for replacing old netlist
 
 write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-07_05-36/results/synthesis/picorv32a.synthesis.v
@@ -509,7 +509,7 @@ write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/des
     run_cts
 
 
-    ![image](https://github.com/user-attachments/assets/73a25cf3-75ca-4e5b-b2e6-d9fb9ab36203)
+   ![image](https://github.com/user-attachments/assets/73a25cf3-75ca-4e5b-b2e6-d9fb9ab36203)
 
 
 
