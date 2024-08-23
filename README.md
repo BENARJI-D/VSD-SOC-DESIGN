@@ -44,7 +44,7 @@ OPENLANE ASIC FLOW
 ![image](https://github.com/user-attachments/assets/1c508b8a-7404-417b-a23f-1e23cd4618ab)
 
                                                            
-                                    DAY-1 LAB-Inception of EDA,OPENLANE,SKY130 PDK
+                                    DAY-1 -Inception of EDA,OPENLANE,SKY130 PDK
            
 "Picorv32a" design synthesis using OPENLANE flow
 
@@ -78,7 +78,8 @@ cd Desktop/work/tools/openlane_working_dir/openlane
 ![image](https://github.com/user-attachments/assets/85a50c62-00f6-4a58-8c57-e1352b432094)
 ![image](https://github.com/user-attachments/assets/81f8927c-0ab7-4d74-ac94-a630fb1cee56)
      
-     FLOPS Ratio
+       
+        FLOPS Ratio
      
 Scereenshots of Synthesis report with NO.of Cells,No.FlipFlops
 
@@ -87,9 +88,10 @@ Scereenshots of Synthesis report with NO.of Cells,No.FlipFlops
 ![image](https://github.com/user-attachments/assets/2acc4db1-5dc8-4278-85e0-2687f4d81b1f)
 
 Flop Ratio=(No.of D-FF/No.of cells)*100
+
  D-Flop Ratio  =1613/14876*100=10.8429%
  
-          DAY-2 LAB-GOOD vs BAD floorplan,Intro to library cells
+          DAY-2 -GOOD vs BAD floorplan,Intro to library cells
                        
     i)FLOORPLAN run using OPENLANE flow
     
