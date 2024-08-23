@@ -36,7 +36,8 @@ OPENLANE ASIC FLOW
              
 ![image](https://github.com/user-attachments/assets/1c508b8a-7404-417b-a23f-1e23cd4618ab)
 
-                                                            DAY-1 LAB
+                                                            DAY-1 LAB-Inception of EDA,OPENLANE,SKY130 PDK
+           
            "Picorv32a" design synthesis using OPENLANE flow
 
 #Change Directory to openlane directory
@@ -63,12 +64,14 @@ cd Desktop/work/tools/openlane_working_dir/openlane
 
   run_synthesis
   
+  Screenshots of each running commands
+  
 ![image](https://github.com/user-attachments/assets/7841cf96-dd0e-475a-a154-4b80d0ea3c75)
 ![image](https://github.com/user-attachments/assets/85a50c62-00f6-4a58-8c57-e1352b432094)
 ![image](https://github.com/user-attachments/assets/81f8927c-0ab7-4d74-ac94-a630fb1cee56)
      
-     
      FLOPS Ratio
+     
 Scereenshots of Synthesis report with NO.of Cells,No.FlipFlops
 
 ![image](https://github.com/user-attachments/assets/d3567bc0-817f-4aa3-a7b2-6e74dba13d2c)
@@ -78,7 +81,7 @@ Scereenshots of Synthesis report with NO.of Cells,No.FlipFlops
 Flop Ratio=(No.of D-FF/No.of cells)*100
  D-Flop Ratio  =1613/14876*100=10.8429%
  
-                                                       DAY-2 LAB
+          DAY-2 LAB-GOOD vs BAD floorplan,Intro to library cells
                        
     i)FLOORPLAN run using OPENLANE flow
 #To invoke openlane flow use command docker
@@ -100,6 +103,7 @@ Flop Ratio=(No.of D-FF/No.of cells)*100
 #run the synthesis using the command
 
   run_synthesis
+  
 #run floorplan using this command
 
   run_floorplan
@@ -127,8 +131,8 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
 
     magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
     
-    Screen shot of Floorplan in Magic tool
-    ![image](https://github.com/user-attachments/assets/e0eacc86-7407-4e78-9e6d-63b109647c87)
+    Screen shot of Floorplan def in Magic tool
+  ![image](https://github.com/user-attachments/assets/e0eacc86-7407-4e78-9e6d-63b109647c87)
     Decap cells
     ![image](https://github.com/user-attachments/assets/8c6f9492-976d-4788-ae14-0a4e387a773f)
     Equidistant tap cells
@@ -147,9 +151,7 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
    ![image](https://github.com/user-attachments/assets/682e47d4-4b29-464b-910c-de18e66671bb)
 
    
-
-        
-    #Set directory path placement def file containing directory
+#Set directory path placement def file containing directory
     
      cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
      
@@ -163,8 +165,9 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
   ![image](https://github.com/user-attachments/assets/41e84a87-a1f0-4749-be40-83c861d967b3)
 
   
-                                                DAY-3
-      SPICEDECK creation for CMOS Inverter
+          DAY-3-Design library cell using magic and ngspice
+                  
+    SPICEDECK creation for CMOS Inverter
       
 ![image](https://github.com/user-attachments/assets/c7e7fb1a-4011-46b0-a3a4-eeab833247b1)
 ![image](https://github.com/user-attachments/assets/b47ab06d-ec33-414b-a3e5-1e9870875068)
@@ -205,13 +208,12 @@ ii)Inverter spice extraction from magic
  #In tkcon window use the following commands 
  
    pwd
+   
  #Extraction command to extract to .ext format
  
   extract all
 
  #enable the parasitic extraction before converting ext to spice
- 
-  parasitic extraction also
   
   ext2spice cthresh 0 rthresh 0
 
@@ -224,6 +226,11 @@ ii)Inverter spice extraction from magic
 
 iii)ngspice simulation
 
+    1-Rise time:The time taken for the output waveform to transition from 20% to 80% of its maximum value.
+    2-Fall time:The time taken for the output waveform to transition from 80% to 20% of its maximum value
+    3-Cell Rise delay:The time taken for a 50% transition at the output (0 to 1) corresponding to a 50% transition at the input (1 to 0).
+    4-Cell fall delay:The time taken for a 50% transition at the output (1 to 0) corresponding to a 50% transition at the input (0 to 1).
+    
 #Command for loading spice file in ngspice simulation
 
 ngspice sky130_inv.spice
@@ -238,6 +245,9 @@ plot y vs time a
 ![image](https://github.com/user-attachments/assets/c9e83dd6-4064-4720-b931-8eeeaf35c6c8)
 ![image](https://github.com/user-attachments/assets/31d2c887-671a-495a-939a-83e46bed4bf7)
 ![image](https://github.com/user-attachments/assets/706cc34f-ddeb-42c5-b407-e3ab54edfdc9)
+
+Rise cell delay=148ps
+Fall cell delay=71ps
 
 iv)Sky 130 PDK intro,Finding and fixing problems for DRC
 
@@ -269,6 +279,8 @@ gvim .magicrc
 
 magic -d XR &
 
+ Screenshots of DRC rules violations and corrections for no DRC violations
+
 ![image](https://github.com/user-attachments/assets/cf328f28-369b-4627-ac40-0866c731d76c)
 ![image](https://github.com/user-attachments/assets/37343b16-5a1c-44aa-8cc3-dee8d31c503d)
 ![image](https://github.com/user-attachments/assets/acc6b6c3-a5f9-4cf4-8154-cdd8f2a7164e)
@@ -282,12 +294,19 @@ magic -d XR &
 ![image](https://github.com/user-attachments/assets/847f67b5-32f7-4396-b3f6-e2d4c37c6c53)
 ![image](https://github.com/user-attachments/assets/5e1235ea-b96e-482e-b4c0-a4f3564a561d)
 
-                      DAY-4
-                      
-Pre layout timing analysis and importance of Good clock tree
+                      DAY-4 -Pre layout timing analysis and importance of Good clock tree
 
 i)Delay tables,Timing analysis and CTS
+      Delay tables
+         At each level,Each node dricing same amound of load otherwise skew will be introduced into the network.
+Identical buffers need to be used at same level.
+      output transition of a cell is the function of input transition+output capacitace.
 
+  Timing modelling using delay tables
+  
+       Converting grid information like rows and columns into track information is important.when designing standard cells,it is important to ensure that input and output ports aligned with intersections of horizontal and vertical tracks.
+      Standard cells width should be odd multiples of horizontal track pitch,height should be odd multiples of vertical track pitch.LEF file provides necessary information for the PNR flow process.tracks.info file contains horizontal and vertical tracks metal layer information.I t contains pitch,spacing data which are used for routing stage.
+     
 ![image](https://github.com/user-attachments/assets/b287ba17-369f-4de3-9ff8-f4801318c423)
 ![image](https://github.com/user-attachments/assets/b4b218c3-762c-4afc-ba16-e50c8298848e)
 ![image](https://github.com/user-attachments/assets/520add47-99bf-4b44-b062-a422866496e7)
@@ -332,7 +351,7 @@ Copy new lef and library files to src directory
 ![image](https://github.com/user-attachments/assets/41624bcb-d723-4ea2-9881-77aab35bc388)
 
 
- ii) Edit config.tcl for changinging lib file and added extra lef into the openlane flow
+ ii) Edit config.tcl for to change lib file and added extra lef in openlane flow
  
   ![image](https://github.com/user-attachments/assets/a122a4ef-cc52-4ae0-94e6-8d0681b273a4)
   
@@ -366,7 +385,9 @@ run_synthesis
 ![image](https://github.com/user-attachments/assets/b8836729-9d58-4d47-805f-aa40e7cd508e)
 ![image](https://github.com/user-attachments/assets/95288fa8-6f9e-41f8-8242-6f9d2cbb0a4b)
 ![image](https://github.com/user-attachments/assets/898be5a6-bcee-4850-9d2f-fe76d97e31ed)
+
 iii)By modifying design parameters we can reduce the new violations into the design
+
 ![image](https://github.com/user-attachments/assets/4556a3d8-7397-4a06-ba48-6881ce854f38)
 ![image](https://github.com/user-attachments/assets/99dd5d64-a85b-49c9-8278-a0fdeaa9e928)
 
@@ -414,6 +435,7 @@ echo $::env(SYNTH_DRIVING_CELL)
 
 run_synthesis
 
+Screenshot of merged.lef in tmp directory
 ![image](https://github.com/user-attachments/assets/d98a44de-1a03-4617-8b05-78d31e5a2d77)
 ![image](https://github.com/user-attachments/assets/49da2720-dc6c-4f2c-a885-9f9c4f04ebed)
 ![image](https://github.com/user-attachments/assets/0649dab7-9e5c-44bd-a187-28429b0b1cd6)
@@ -446,11 +468,14 @@ Commands to load placement def in magic
 ![image](https://github.com/user-attachments/assets/b45948c0-aa3b-490c-99b5-a6dedebfac3f)
 
 v)Post_synthesis timing analysis with openSTA tool
+      Present wns,tns are 0.
 
-     Created pre_sta.conf For static timing analysis in openlane
+     For static timing analysis, in openlane directory Created pre_sta.conf file
      
    ![image](https://github.com/user-attachments/assets/7b06975a-03f0-40c3-b152-511ca4683a73)
-   Created my_bse.sdc file in src directory based on base.sdc file in openlane/scripts directory
+   
+   Created my_bse.sdc file in src directory based on base.sdc file in openlane/scripts directory.
+   
    ![image](https://github.com/user-attachments/assets/cfdbd871-4b4b-4975-a6d6-dbe52e985f8d)
 
   #Change directory to openlane
@@ -492,7 +517,7 @@ report_checks -fields {net cap slew input_pins} -digits 4
        Eco fix started when wns is 23.89 now it comes down to 22.823 by replacing some of the driver cells by upsizing based on the load connected to that particular net.
        
 vii)replace old netlist with new netlist and do the PnR flow
-      but we need to copy the old netlist.To replace old netlist with new netlist to PnR flow,use write_verilog command
+      First we need to copy the old netlist.To replace old netlist with new netlist to PnR flow,use write_verilog command
 
 ![image](https://github.com/user-attachments/assets/003ab086-d012-4661-bfb3-0115e9e5bb0b)
 
@@ -508,8 +533,109 @@ write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/des
     #Command for running cts
     run_cts
 
+![image](https://github.com/user-attachments/assets/73a25cf3-75ca-4e5b-b2e6-d9fb9ab36203)
 
-   ![image](https://github.com/user-attachments/assets/73a25cf3-75ca-4e5b-b2e6-d9fb9ab36203)
+viii)Post CTS timing analysis using OpenRoad
+
+Screenshots of timing reports
+![image](https://github.com/user-attachments/assets/11287fa4-a276-4fdf-a4a7-a6560f4303df)
+![image](https://github.com/user-attachments/assets/a431d464-60a2-4d51-88ba-282cf3383494)
+![image](https://github.com/user-attachments/assets/82f2adbe-b291-4e09-a4fe-eb98a451d941)
+![image](https://github.com/user-attachments/assets/0c459a73-7a7f-4306-8036-91510ff923be)
+
+           DAY-5 RTL2GDS using TritonRoute&OpenSTA
+
+i)Cts step is complated,next need to create power distribution network,command for PD network
+
+  gen_pdn
+  
+![image](https://github.com/user-attachments/assets/4f27b955-b5c9-4245-82ac-6c6e2ad3aa15)
+![image](https://github.com/user-attachments/assets/a231c36a-4cbf-4c52-903f-e516eb283f03)
+
+#Change directory to PD N/W def
+
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-07_05-36/tmp/floorplan/
+
+#Command to view PDN def in magic tool
+
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
+
+![image](https://github.com/user-attachments/assets/7de724d8-7a5e-4a0f-b022-efae752d1989)
+
+
+
+ii)Now do detailed routing using commands 
+
+#Checking CURRENT_DEF
+   
+echo $::env(CURRENT_DEF)
+
+#Check value for ROUTING_STRATEGY
+
+echo $::env(ROUTING_STRATEGY)
+
+#Command for detailed route 
+
+run_routing
+
+Screenshots of routing stage
+![image](https://github.com/user-attachments/assets/4158b6b2-f0c6-4629-904b-115c99eb75e7)
+![image](https://github.com/user-attachments/assets/decc4c08-f21f-4039-b4a6-862745b6da9e)
+
+#Change directory to routed def directory
+
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-07_05-36/results/routing/
+
+#Command to check routed def in magic tool
+
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+
+![image](https://github.com/user-attachments/assets/2cd8a14b-3398-48a1-8732-a14e040fe39b)
+![image](https://github.com/user-attachments/assets/944e84d9-9ed8-45b2-b432-dcd0d5941528)
+![image](https://github.com/user-attachments/assets/1cb1bfad-4ebd-4b15-9b1b-57b9b21b9c31)
+![image](https://github.com/user-attachments/assets/31da291f-08fd-4502-a46c-da47fac8a3b5)
+
+Screenshot of fastroure guide
+
+![image](https://github.com/user-attachments/assets/53f614e2-7450-4810-a785-d99e415a353f)
+
+iii)Parasitic extraction using SPEF extractor
+
+#Change directory
+
+cd Desktop/work/tools/SPEF_EXTRACTOR
+
+#Command extract spef
+
+python3 main.py 
+/home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-07_05-36/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-07_05-36/results/routing/picorv32a.def
+
+iv)Post-Route timing analysis using extracted parasitic in OPENROAD
+
+![image](https://github.com/user-attachments/assets/8dbcb2cf-e9f7-4e1a-8afe-cd075c4c3b97)
+![image](https://github.com/user-attachments/assets/54de82fa-4eb3-4040-8974-1676e23a7f12)
+![image](https://github.com/user-attachments/assets/833c79fb-69ab-4522-8291-2cb8334e984b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
 
 
 
