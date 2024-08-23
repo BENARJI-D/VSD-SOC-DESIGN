@@ -66,6 +66,8 @@ cd Desktop/work/tools/openlane_working_dir/openlane
 ![image](https://github.com/user-attachments/assets/7841cf96-dd0e-475a-a154-4b80d0ea3c75)
 ![image](https://github.com/user-attachments/assets/85a50c62-00f6-4a58-8c57-e1352b432094)
 ![image](https://github.com/user-attachments/assets/81f8927c-0ab7-4d74-ac94-a630fb1cee56)
+     
+     
      FLOPS Ratio
 Scereenshots of Synthesis report with NO.of Cells,No.FlipFlops
 
@@ -103,10 +105,13 @@ Flop Ratio=(No.of D-FF/No.of cells)*100
   run_floorplan
 
 ![image](https://github.com/user-attachments/assets/e551e518-a6a2-4cf0-9cc1-ac4fbc78175f)
+
  ii)Die area calculation for floorplan def
  
  Screen shot of Floorplan def
+ 
  ![image](https://github.com/user-attachments/assets/fb9e4218-7a9f-4057-84b8-31480a508de5)
+  
   Fom def
    1000 unit distance=1 micron
    Die width=660685/1000=660.685 microns
@@ -115,10 +120,13 @@ Flop Ratio=(No.of D-FF/No.of cells)*100
 iii)Magic tool to visualize floorplan using floorplan def file
 
 #Command to set the directory to run magic toolc
+
 cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/floorplan/
 
 #Command for loading floorplan def in Magic tool
+
     magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+    
     Screen shot of Floorplan in Magic tool
     ![image](https://github.com/user-attachments/assets/e0eacc86-7407-4e78-9e6d-63b109647c87)
     Decap cells
@@ -142,8 +150,11 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
 
         
     #Set directory path placement def file containing directory
+    
      cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
+     
     #Command for loading placement def in Magic tool
+    
     magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read 
      ../../tmp/merged.lef def read picorv32a.placement.def &
 
@@ -154,6 +165,7 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
   
                                                 DAY-3
       SPICEDECK creation for CMOS Inverter
+      
 ![image](https://github.com/user-attachments/assets/c7e7fb1a-4011-46b0-a3a4-eeab833247b1)
 ![image](https://github.com/user-attachments/assets/b47ab06d-ec33-414b-a3e5-1e9870875068)
 
@@ -191,13 +203,16 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
 ii)Inverter spice extraction from magic
 
  #In tkcon window use the following commands 
+ 
    pwd
  #Extraction command to extract to .ext format
+ 
   extract all
 
  #enable the parasitic extraction before converting ext to spice
  
   parasitic extraction also
+  
   ext2spice cthresh 0 rthresh 0
 
  #Convert ext to spice
@@ -268,6 +283,7 @@ magic -d XR &
 ![image](https://github.com/user-attachments/assets/5e1235ea-b96e-482e-b4c0-a4f3564a561d)
 
                       DAY-4
+                      
 Pre layout timing analysis and importance of Good clock tree
 
 i)Delay tables,Timing analysis and CTS
@@ -288,12 +304,15 @@ i)Conditions for to inclde our custom design in picorv32a design
   3-Width of standard cell is odd multiples of horizontal track pitch.
 
   #change working directory to vsdstdcelldesign direcory
+  
   cd Desktop/work/tools/openlane_working_dir/
 
   #command to open inverter layout in magic
+  
   magic-T sky130A.tech sky130_inv.mag &
 
   Screenshots of tracks.info file opening,contents of file
+  
   ![image](https://github.com/user-attachments/assets/8ba25e5d-f9e7-498e-bddd-2a5bf3fd2d7e)
 
   ![image](https://github.com/user-attachments/assets/1de06f7b-269d-4d99-a8fa-9a8bcb344551)
@@ -301,6 +320,7 @@ i)Conditions for to inclde our custom design in picorv32a design
 #command for setting grid values based on tracks.info file
 
 grid 0.46um 0.34um 0.23m 0.17um
+
 ![image](https://github.com/user-attachments/assets/30a0ff81-3e75-4d08-a76a-06a4ff328e24)
 ![image](https://github.com/user-attachments/assets/dbca9e64-6808-40fd-881e-2a83ae34a242)
 ![image](https://github.com/user-attachments/assets/f503ad17-6dfc-4fcc-897a-3865b27557cd)
@@ -308,10 +328,12 @@ grid 0.46um 0.34um 0.23m 0.17um
 ![image](https://github.com/user-attachments/assets/bd98989c-49d6-4ff9-b75b-29a5c77e01fe)
 
 Copy new lef and library files to src directory
+
 ![image](https://github.com/user-attachments/assets/41624bcb-d723-4ea2-9881-77aab35bc388)
 
 
  ii) Edit config.tcl for changinging lib file and added extra lef into the openlane flow
+ 
   ![image](https://github.com/user-attachments/assets/a122a4ef-cc52-4ae0-94e6-8d0681b273a4)
   
   iii)Commands to run synthesis in openlane flow with new inverter cell
@@ -333,11 +355,14 @@ Copy new lef and library files to src directory
   prep -design picorv32a -tag 31-07_05-36 -overwrite
 
 #Commands for including newly lef to the openlane flow
+
 set lefs [glob $::env(DESIGN_DIR)/src/*.lef
+
 add_lefs -src $lefs
 
 #Command for running synthesis 
 run_synthesis
+
 ![image](https://github.com/user-attachments/assets/b8836729-9d58-4d47-805f-aa40e7cd508e)
 ![image](https://github.com/user-attachments/assets/95288fa8-6f9e-41f8-8242-6f9d2cbb0a4b)
 ![image](https://github.com/user-attachments/assets/898be5a6-bcee-4850-9d2f-fe76d97e31ed)
@@ -352,31 +377,41 @@ iii)By modifying design parameters we can reduce the new violations into the des
 #setting openlane flow to be interactive mode
 
   ./flow.tcl -interactive
+  
 #Now prep design for update variables
+
 prep -design picorv32a -tag 31-07_05-36 -overwrite
 
 #Commands for include newlef to openlane 
+
 set lefs [glob $::env(DESIGN_DIR)/src/*.lef
+
 add_lefs -src $lefs
 
 echo $::env(SYNTH_STRATEGY)
 
 #Command for setting SYNTH_STRATEGY
+
 set ::env(SYNTH_STRATEGY) "DELAY 3"
 
-#Command for displaying SYNTH_BUFFERING 
+#Command for displaying SYNTH_BUFFERING
+
 echo $::env(SYNTH_BUFFERING)
 
 #Command for display value of variable SYNTH_SIZING
+
 echo $::env(SYNTH_SIZING)
 
 #Command for set new value for SYNTH_SIZING
+
 set ::env(SYNTH_SIZING) 1
 
 #Command for display current value of SYNTH_DRIVING_CELL
+
 echo $::env(SYNTH_DRIVING_CELL)
 
-#Command run synthesis
+#Command to run synthesis
+
 run_synthesis
 
 ![image](https://github.com/user-attachments/assets/d98a44de-1a03-4617-8b05-78d31e5a2d77)
@@ -384,9 +419,11 @@ run_synthesis
 ![image](https://github.com/user-attachments/assets/0649dab7-9e5c-44bd-a187-28429b0b1cd6)
 ![image](https://github.com/user-attachments/assets/01dbcdff-68da-4df1-8e45-bb55a171d41d)
 ![image](https://github.com/user-attachments/assets/3b69d0f0-474c-4955-9313-69ff01889542)
+
 iv)Now run floorpland,placement and check whether the custom cell is present in the PnR flow
 
 #Commands used for replacement"run_floorplan" command
+
 init_floorplan
 
 place_io
@@ -394,7 +431,9 @@ place_io
 tap_decap_or
 
 #Command for placement run
+
 run_placement
+
 ![image](https://github.com/user-attachments/assets/43756159-0d38-44ac-b51f-e00ca21a5aa7)
 ![image](https://github.com/user-attachments/assets/7fe1e442-df72-469f-bd29-e0135c6555e5)
 ![image](https://github.com/user-attachments/assets/4c198593-6080-43e8-a8e1-c965df4dc6c6)
@@ -407,6 +446,7 @@ Commands to load placement def in magic
 ![image](https://github.com/user-attachments/assets/b45948c0-aa3b-490c-99b5-a6dedebfac3f)
 
 v)Post_synthesis timing analysis with openSTA tool
+
      Created pre_sta.conf For static timing analysis in openlane
      
    ![image](https://github.com/user-attachments/assets/7b06975a-03f0-40c3-b152-511ca4683a73)
@@ -414,9 +454,11 @@ v)Post_synthesis timing analysis with openSTA tool
    ![image](https://github.com/user-attachments/assets/cfdbd871-4b4b-4975-a6d6-dbe52e985f8d)
 
   #Change directory to openlane
+  
 cd Desktop/work/tools/openlane_working_dir/openlane
 
 #Command for invoking OpenSTA tool 
+
 sta pre_sta.conf 
 
 ![image](https://github.com/user-attachments/assets/e6b9c9a0-2832-436f-9c0a-e3293c33a21e)
@@ -430,7 +472,69 @@ sta pre_sta.conf
     Due to more fanout value causing more delay,here we reduce the max fanout by using the following commands
     
 vi)ECO timing fixing for clear all violations
+
+#Report for particular connections for a net
+report_net -connections _netnumber_
+
+#Command for Replacing a particular cell
+replace_cell _driverpin number_ sky130_fd_sc_hd__gate name with size
+
+#Timing report check
+report_checks -fields {net cap slew input_pins} -digits 4
+
+  ![image](https://github.com/user-attachments/assets/bce04dc6-968c-47ef-97be-3ada30768a25)
+  ![image](https://github.com/user-attachments/assets/37e51ec3-f9b2-4cd2-918b-995566df8ba6)
+![image](https://github.com/user-attachments/assets/d97656bd-21f9-4c06-a045-31687625eeea)
+![image](https://github.com/user-attachments/assets/3d89b434-67a0-4a31-a099-683463c6665b)
+![image](https://github.com/user-attachments/assets/00b70244-3c94-4259-a867-48b42977d383)
+![image](https://github.com/user-attachments/assets/a8729cb9-6e11-4834-9438-6593a7c9ba49)
+![image](https://github.com/user-attachments/assets/fde43744-7223-4e13-afc0-2d70d8fe6193)
+ 
+       Eco fix started when wns is 23.89 now it comes down to 22.823 by replacing some of the driver cells by upsizing based on the load connected to that particular net.
+       
+vii)replace old netlist with new netlist and do the PnR flow
+      but we need to copy the old netlist.To replace old netlist with new netlist to PnR flow,use write_verilog command
+      
+      ![image](https://github.com/user-attachments/assets/dba7c7f4-8b67-493e-b2e6-6157a9f9f3ca)
+
+#Command for replacing old netlist
+
+write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-07_05-36/results/synthesis/picorv32a.synthesis.v
+
+![image](https://github.com/user-attachments/assets/45b6d8a0-37b1-4345-a585-b959d1addec9)
+
+      It is confirmed that the old netlist is replaced by the updated netlist based on the _13161_ cell updation.
+
+    #Command for running cts
+    run_cts
+
+
+    ![image](https://github.com/user-attachments/assets/73a25cf3-75ca-4e5b-b2e6-d9fb9ab36203)
+
+
+
+
+
+    
+    
+ 
+
+
+
+
+
+      
+      
+
   
+
+
+
+
+
+
+
+
 
 
 
