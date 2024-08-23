@@ -189,28 +189,34 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
 ![image](https://github.com/user-attachments/assets/ba57d33b-ef96-4586-b86c-805f66c663b7)
 
 ii)Inverter spice extraction from magic
-  In tkcon window use the following commands 
+
+ #In tkcon window use the following commands 
    pwd
  #Extraction command to extract to .ext format
   extract all
 
- #enable the parasitic extraction before converting ext to 
- spice
+ #enable the parasitic extraction before converting ext to spice
+ 
   parasitic extraction also
   ext2spice cthresh 0 rthresh 0
 
  #Convert ext to spice
+ 
   ext2spice
 
   ![WhatsApp Image 2024-08-04 at 12 54 59_485f60f9](https://github.com/user-attachments/assets/95dece16-439d-40e8-8a26-5d9ecfe13791)
 ![WhatsApp Image 2024-08-04 at 14 25 16_bc5e6a5c](https://github.com/user-attachments/assets/b5e2bba8-40d9-4702-bc84-6a03da4d85c3)
 
 iii)ngspice simulation
+
 #Command for loading spice file in ngspice simulation
+
 ngspice sky130_inv.spice
 
 #Spice file loaded,Now plot the graph uning the command
+
 plot y vs time a
+
 ![image](https://github.com/user-attachments/assets/7e046260-9188-41ed-8341-95651e68c302)
 ![image](https://github.com/user-attachments/assets/caddad6b-52bf-4520-a79c-32a82a928455)
 ![image](https://github.com/user-attachments/assets/4fc3fb83-5702-4f91-aa22-1db5f7bd8d6b)
@@ -225,21 +231,27 @@ iv)Sky 130 PDK intro,Finding and fixing problems for DRC
 cd
 
 #Command for downloading lab files
+
 wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
 
 #command for extraction of lab files
+
 tar xfz drc_tests.tgz
 
 #Change directory into the lab files directory
+
 cd drc_tests
 
 #List all files present in the current directory
+
 ls -ltr
 
-#Command to view .magicrc file
+#To view .magicrc file
+
 gvim .magicrc
 
-# Command to open magic tool in better graphics
+#Command to open magic tool
+
 magic -d XR &
 
 ![image](https://github.com/user-attachments/assets/cf328f28-369b-4627-ac40-0866c731d76c)
@@ -254,6 +266,223 @@ magic -d XR &
 ![image](https://github.com/user-attachments/assets/bef26b99-0097-41b6-9892-9bf3ae617a04)
 ![image](https://github.com/user-attachments/assets/847f67b5-32f7-4396-b3f6-e2d4c37c6c53)
 ![image](https://github.com/user-attachments/assets/5e1235ea-b96e-482e-b4c0-a4f3564a561d)
+
+                      DAY-4
+Pre layout timing analysis and importance of Good clock tree
+
+i)Delay tables,Timing analysis and CTS
+
+![image](https://github.com/user-attachments/assets/b287ba17-369f-4de3-9ff8-f4801318c423)
+![image](https://github.com/user-attachments/assets/b4b218c3-762c-4afc-ba16-e50c8298848e)
+![image](https://github.com/user-attachments/assets/520add47-99bf-4b44-b062-a422866496e7)
+![image](https://github.com/user-attachments/assets/555e4d72-235d-475a-8161-253e6850ead4)
+![image](https://github.com/user-attachments/assets/b5f9327e-27c7-4e7e-8e2a-ae5a5b834def)
+![image](https://github.com/user-attachments/assets/fa68ba9e-6a36-4f5c-8552-6131ce662d4d)
+![image](https://github.com/user-attachments/assets/2c056fef-09bc-47c7-a221-4203ffab8c80)
+![image](https://github.com/user-attachments/assets/4114c5b9-9290-4c3c-8cf3-f0ab2ed8faad)
+![image](https://github.com/user-attachments/assets/31bf6c81-3559-4700-adf6-e92e56e60536)
+
+i)Conditions for to inclde our custom design in picorv32a design
+  1-Input&output ports should be lie on the intersection of horizontal and vertical tracks
+  2-Height of standard cell is even multiples of vertical track pitch
+  3-Width of standard cell is odd multiples of horizontal track pitch.
+
+  #change working directory to vsdstdcelldesign direcory
+  cd Desktop/work/tools/openlane_working_dir/
+
+  #command to open inverter layout in magic
+  magic-T sky130A.tech sky130_inv.mag &
+
+  Screenshots of tracks.info file opening,contents of file
+  ![image](https://github.com/user-attachments/assets/8ba25e5d-f9e7-498e-bddd-2a5bf3fd2d7e)
+
+  ![image](https://github.com/user-attachments/assets/1de06f7b-269d-4d99-a8fa-9a8bcb344551)
+
+#command for setting grid values based on tracks.info file
+
+grid 0.46um 0.34um 0.23m 0.17um
+![image](https://github.com/user-attachments/assets/30a0ff81-3e75-4d08-a76a-06a4ff328e24)
+![image](https://github.com/user-attachments/assets/dbca9e64-6808-40fd-881e-2a83ae34a242)
+![image](https://github.com/user-attachments/assets/f503ad17-6dfc-4fcc-897a-3865b27557cd)
+![image](https://github.com/user-attachments/assets/e7f34b54-6563-48cd-9091-d1914fabc232)
+![image](https://github.com/user-attachments/assets/bd98989c-49d6-4ff9-b75b-29a5c77e01fe)
+
+Copy new lef and library files to src directory
+![image](https://github.com/user-attachments/assets/41624bcb-d723-4ea2-9881-77aab35bc388)
+
+
+ ii) Edit config.tcl for changinging lib file and added extra lef into the openlane flow
+  ![image](https://github.com/user-attachments/assets/a122a4ef-cc52-4ae0-94e6-8d0681b273a4)
+  
+  iii)Commands to run synthesis in openlane flow with new inverter cell
+  
+  #To invoke openlane flow use command docker
+
+  docker
+
+#setting openlane flow to be interactive mode
+
+  ./flow.tcl -interactive
+
+#input the openlane require package
+
+  package require openlane 0.9
+
+#Now prep the design for the openlane flow
+
+  prep -design picorv32a -tag 31-07_05-36 -overwrite
+
+#Commands for including newly lef to the openlane flow
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef
+add_lefs -src $lefs
+
+#Command for running synthesis 
+run_synthesis
+![image](https://github.com/user-attachments/assets/b8836729-9d58-4d47-805f-aa40e7cd508e)
+![image](https://github.com/user-attachments/assets/95288fa8-6f9e-41f8-8242-6f9d2cbb0a4b)
+![image](https://github.com/user-attachments/assets/898be5a6-bcee-4850-9d2f-fe76d97e31ed)
+iii)By modifying design parameters we can reduce the new violations into the design
+![image](https://github.com/user-attachments/assets/4556a3d8-7397-4a06-ba48-6881ce854f38)
+![image](https://github.com/user-attachments/assets/99dd5d64-a85b-49c9-8278-a0fdeaa9e928)
+
+#To invoke openlane flow use command docker
+
+  docker
+
+#setting openlane flow to be interactive mode
+
+  ./flow.tcl -interactive
+#Now prep design for update variables
+prep -design picorv32a -tag 31-07_05-36 -overwrite
+
+#Commands for include newlef to openlane 
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef
+add_lefs -src $lefs
+
+echo $::env(SYNTH_STRATEGY)
+
+#Command for setting SYNTH_STRATEGY
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+#Command for displaying SYNTH_BUFFERING 
+echo $::env(SYNTH_BUFFERING)
+
+#Command for display value of variable SYNTH_SIZING
+echo $::env(SYNTH_SIZING)
+
+#Command for set new value for SYNTH_SIZING
+set ::env(SYNTH_SIZING) 1
+
+#Command for display current value of SYNTH_DRIVING_CELL
+echo $::env(SYNTH_DRIVING_CELL)
+
+#Command run synthesis
+run_synthesis
+
+![image](https://github.com/user-attachments/assets/d98a44de-1a03-4617-8b05-78d31e5a2d77)
+![image](https://github.com/user-attachments/assets/49da2720-dc6c-4f2c-a885-9f9c4f04ebed)
+![image](https://github.com/user-attachments/assets/0649dab7-9e5c-44bd-a187-28429b0b1cd6)
+![image](https://github.com/user-attachments/assets/01dbcdff-68da-4df1-8e45-bb55a171d41d)
+![image](https://github.com/user-attachments/assets/3b69d0f0-474c-4955-9313-69ff01889542)
+iv)Now run floorpland,placement and check whether the custom cell is present in the PnR flow
+
+#Commands used for replacement"run_floorplan" command
+init_floorplan
+
+place_io
+
+tap_decap_or
+
+#Command for placement run
+run_placement
+![image](https://github.com/user-attachments/assets/43756159-0d38-44ac-b51f-e00ca21a5aa7)
+![image](https://github.com/user-attachments/assets/7fe1e442-df72-469f-bd29-e0135c6555e5)
+![image](https://github.com/user-attachments/assets/4c198593-6080-43e8-a8e1-c965df4dc6c6)
+![image](https://github.com/user-attachments/assets/83f7bd9d-90a1-4efb-9ff8-466600343212)
+
+Commands to load placement def in magic
+
+![image](https://github.com/user-attachments/assets/f0445c64-394a-4b61-8e39-0cc6a824a2c6)
+![image](https://github.com/user-attachments/assets/cfd59d39-2b89-47c5-9186-8e0ef97eb5dd)
+![image](https://github.com/user-attachments/assets/b45948c0-aa3b-490c-99b5-a6dedebfac3f)
+
+v)Post_synthesis timing analysis with openSTA tool
+     Created pre_sta.conf For static timing analysis in openlane
+     
+   ![image](https://github.com/user-attachments/assets/7b06975a-03f0-40c3-b152-511ca4683a73)
+   Created my_bse.sdc file in src directory based on base.sdc file in openlane/scripts directory
+   ![image](https://github.com/user-attachments/assets/cfdbd871-4b4b-4975-a6d6-dbe52e985f8d)
+
+  #Change directory to openlane
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+#Command for invoking OpenSTA tool 
+sta pre_sta.conf 
+
+![image](https://github.com/user-attachments/assets/e6b9c9a0-2832-436f-9c0a-e3293c33a21e)
+![image](https://github.com/user-attachments/assets/ee9ee1be-a272-41cb-b3fc-438c6a665b3e)
+![image](https://github.com/user-attachments/assets/b21ea722-9ff4-4ca4-966c-7fa8ea1153a9)
+![image](https://github.com/user-attachments/assets/aa02a71c-1765-4e02-bae1-7b8783414663)
+![image](https://github.com/user-attachments/assets/19f3e7a9-d81a-40c0-be78-e67dbbf8b06f)
+![image](https://github.com/user-attachments/assets/0988b0e4-cf3e-46f4-8eeb-8bed793c408b)
+
+    Due to more fanout value causing more delay,here we reduce the max fanout by using the following commands
+    
+vi)ECO timing fixing for clear all violations
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
