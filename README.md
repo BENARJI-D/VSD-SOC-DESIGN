@@ -2,20 +2,27 @@
           Workshop contents
           
         1.Intro to Opensource EDA tool(OPENLANE) and PDK(skywater130nm)
-        2.Floorplanning and Power planning
+        2.GOOD VS BAD floorplan,Introduction to library cells
         3.Cell design using Magic and Ngspice
         4.Pre layout timing analysis,importance of good clock trees(min skew)
         5.Final steps for RTL2GDS using tritonRoute and openSTA
 
  DAY 1: Inception of open source EDA, openLANE, sky130 PDK
+
+ 
  How to talk to computers:
+ 
  ![image](https://github.com/user-attachments/assets/2b82a189-fb5a-4b7d-9b0a-49754360c6b0)
      
      Physical design is focussing on the macro inside the processor and also block level design.
+     
   ![image](https://github.com/user-attachments/assets/7070d7dd-3df0-4e35-ace3-21800b3bf415)
+  
              The above image shows a PCB on which different component placed.
+             
  ![image](https://github.com/user-attachments/assets/50bf7477-91dd-47f6-b6d9-818d7998e4dc)
 ![image](https://github.com/user-attachments/assets/c8cc3ba9-8042-4cf5-8392-81d29d6290c1)
+
 CORE: It is the section of the chip where the fundamental logic of the design is placed.
 
 DIE: A die, which consists of core, is small semiconductor material specimen on which the fundamental circuit is fabricated.
@@ -36,9 +43,10 @@ OPENLANE ASIC FLOW
              
 ![image](https://github.com/user-attachments/assets/1c508b8a-7404-417b-a23f-1e23cd4618ab)
 
-                                                            DAY-1 LAB-Inception of EDA,OPENLANE,SKY130 PDK
+                                                           
+                                    DAY-1 LAB-Inception of EDA,OPENLANE,SKY130 PDK
            
-           "Picorv32a" design synthesis using OPENLANE flow
+"Picorv32a" design synthesis using OPENLANE flow
 
 #Change Directory to openlane directory
 
@@ -84,6 +92,7 @@ Flop Ratio=(No.of D-FF/No.of cells)*100
           DAY-2 LAB-GOOD vs BAD floorplan,Intro to library cells
                        
     i)FLOORPLAN run using OPENLANE flow
+    
 #To invoke openlane flow use command docker
 
   docker
