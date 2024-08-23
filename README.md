@@ -192,9 +192,63 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
 DAY-3-Design library cell using magic and ngspice
                   
 SPICEDECK creation for CMOS Inverter
-      
+
+A spicedeck contains netlist with connectivity information,inputs,outputs tap points.Nodes are required for defining a netlist
+
 ![image](https://github.com/user-attachments/assets/c7e7fb1a-4011-46b0-a3a4-eeab833247b1)
 ![image](https://github.com/user-attachments/assets/b47ab06d-ec33-414b-a3e5-1e9870875068)
+
+Comparision of SPICE results for different PMOS widths,which causes output characteristics switching happens.
+
+![image](https://github.com/user-attachments/assets/91d781c7-ff2e-49a3-a41f-f55f05d0cb50)
+
+
+INVERTER CHARACTERISTICS
+
+Input low voltage:The highest input voltage that is still interpreted as logic 0.
+
+Input high voltage:The lowest input voltage that is recognized as logic 1.
+
+Output Low Voltage (Vol): The voltage level at which the output changes from a high state to a low state.
+
+Output High Voltage (Voh): The voltage level at which the output changes from a low state to a high state.
+
+Noise margins:The voltage ranges that define the tolerance for noise. The low noise margin is the range between Vil and Vol, while the high noise margin is the range between Vih and Voh.
+
+Fabrication process of a CMOS
+
+Creating active region for Tansistors
+
+![image](https://github.com/user-attachments/assets/19c4c940-9461-4084-98e3-a4e399c9eb9f)
+
+N-well,P-well formation
+
+![image](https://github.com/user-attachments/assets/ee820353-7cba-4da5-9a3f-4b17fe083af1)
+![image](https://github.com/user-attachments/assets/ff86bba5-d531-4ad0-bf00-24b890a76d19)
+
+Formation of Gate
+![image](https://github.com/user-attachments/assets/6d26a5b0-dd36-48c6-a36d-7c1dcccd06bf)
+![image](https://github.com/user-attachments/assets/a9f09607-e411-46b3-a5c8-86201426e74a)
+
+Lightly doped drain formation
+![image](https://github.com/user-attachments/assets/5bef5247-cf90-4d2e-a5b4-6afc75ccd55c)
+![image](https://github.com/user-attachments/assets/bd9ec88d-5ba4-483e-82f7-b14fa658c796)
+![image](https://github.com/user-attachments/assets/a0ec6b56-88a3-43f2-9b1a-fdd254aa75d8)
+
+Source and Drain formation
+![image](https://github.com/user-attachments/assets/17954aba-d122-4ee6-898d-b41d051d0257)
+![image](https://github.com/user-attachments/assets/f695212e-229a-4907-9c88-373ef57a3789)
+
+steps to form contacts and interconnects
+![image](https://github.com/user-attachments/assets/2508d2cf-acc6-4630-b91f-c7a8ae219faf)
+![image](https://github.com/user-attachments/assets/2e1095f1-09be-4e50-b043-25944bf56d5b)
+![image](https://github.com/user-attachments/assets/d2b491c0-eb59-43dc-86ac-8b05b2995a3a)
+
+Higher level metal formation
+![image](https://github.com/user-attachments/assets/9636fc90-a9e4-4b88-8a60-36f5502c3b43)
+![image](https://github.com/user-attachments/assets/79966fb0-02e9-4252-bb0f-463f1df77b8b)
+![image](https://github.com/user-attachments/assets/6a091059-3fc7-49a5-9e16-c978af9fdcd1)
+
 
 
 i)Cloning std cell design from github repository
@@ -251,8 +305,11 @@ ii)Inverter spice extraction from magic
 iii)ngspice simulation
 
 1-Rise time:The time taken for the output waveform to transition from 20% to 80% of its maximum value.
-2-Fall time:The time taken for the output waveform to transition from 80% to 20% of its maximum value
+
+2-Fall time:The time taken for the output waveform to transition from 80% to 20% of its maximum value.
+
 3-Cell Rise delay:The time taken for a 50% transition at the output (0 to 1) corresponding to a 50% transition at the input (1 to 0).
+
 4-Cell fall delay:The time taken for a 50% transition at the output (1 to 0) corresponding to a 50% transition at the input (0 to 1).
     
 #Command for loading spice file in ngspice simulation
@@ -271,6 +328,7 @@ plot y vs time a
 ![image](https://github.com/user-attachments/assets/706cc34f-ddeb-42c5-b407-e3ab54edfdc9)
 
 Rise cell delay=148ps
+
 Fall cell delay=71ps
 
 iv)Sky 130 PDK intro,Finding and fixing problems for DRC
@@ -318,7 +376,8 @@ magic -d XR &
 ![image](https://github.com/user-attachments/assets/847f67b5-32f7-4396-b3f6-e2d4c37c6c53)
 ![image](https://github.com/user-attachments/assets/5e1235ea-b96e-482e-b4c0-a4f3564a561d)
 
-                      DAY-4 -Pre layout timing analysis and importance of Good clock tree
+DAY-4 -Pre layout timing analysis and importance of Good clock tree
+
 
 i)Delay tables,Timing analysis and CTS
 
@@ -345,11 +404,11 @@ Standard cells width should be odd multiples of horizontal track pitch,height sh
 
 i)Conditions for to inclde our custom design in picorv32a design
 
-  1-Input&output ports should be lie on the intersection of horizontal and vertical tracks
+1-Input&output ports should be lie on the intersection of horizontal and vertical tracks
   
-  2-Height of standard cell is even multiples of vertical track pitch.
+2-Height of standard cell is even multiples of vertical track pitch.
   
-  3-Width of standard cell is odd multiples of horizontal track pitch.
+3-Width of standard cell is odd multiples of horizontal track pitch.
 
   #change working directory to vsdstdcelldesign direcory
   
