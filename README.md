@@ -426,9 +426,11 @@ sta pre_sta.conf
 ![image](https://github.com/user-attachments/assets/19f3e7a9-d81a-40c0-be78-e67dbbf8b06f)
 ![image](https://github.com/user-attachments/assets/0988b0e4-cf3e-46f4-8eeb-8bed793c408b)
 
+
     Due to more fanout value causing more delay,here we reduce the max fanout by using the following commands
     
 vi)ECO timing fixing for clear all violations
+  
 
 
 
