@@ -14,11 +14,11 @@
  
  ![image](https://github.com/user-attachments/assets/2b82a189-fb5a-4b7d-9b0a-49754360c6b0)
      
-     Physical design is focussing on the macro inside the processor and also block level design.
+Physical design is focussing on the macro inside the processor and also block level design.
      
   ![image](https://github.com/user-attachments/assets/7070d7dd-3df0-4e35-ace3-21800b3bf415)
   
-             The above image shows a PCB on which different component placed.
+The above image shows a PCB on which different component placed.
              
  ![image](https://github.com/user-attachments/assets/50bf7477-91dd-47f6-b6d9-818d7998e4dc)
 ![image](https://github.com/user-attachments/assets/c8cc3ba9-8042-4cf5-8392-81d29d6290c1)
@@ -39,7 +39,7 @@ SIMPLIFIED RTL TO GDS FLOW
 
 OPENLANE ASIC FLOW
              
-             Open LANE is an open-source EDA toolchain designed for digital ASIC design and optimization, it has open everything SOC’S,OPEN PDK’S,OPEN EDA,OPEN RTL. It integrates various tools and flows to streamline the design process from RTL to GDSII. It produce clean GDSII with no human intervention. 
+Open LANE is an open-source EDA toolchain designed for digital ASIC design and optimization, it has open everything SOC’S,OPEN PDK’S,OPEN EDA,OPEN RTL. It integrates various tools and flows to streamline the design process from RTL to GDSII. It produce clean GDSII with no human intervention. 
              
 ![image](https://github.com/user-attachments/assets/1c508b8a-7404-417b-a23f-1e23cd4618ab)
 
@@ -79,7 +79,7 @@ cd Desktop/work/tools/openlane_working_dir/openlane
 ![image](https://github.com/user-attachments/assets/81f8927c-0ab7-4d74-ac94-a630fb1cee56)
      
        
-        FLOPS Ratio
+FLOPS Ratio
      
 Scereenshots of Synthesis report with NO.of Cells,No.FlipFlops
 
@@ -91,9 +91,10 @@ Flop Ratio=(No.of D-FF/No.of cells)*100
 
  D-Flop Ratio  =1613/14876*100=10.8429%
  
-          DAY-2 -GOOD vs BAD floorplan,Intro to library cells
+ 
+DAY-2 -GOOD vs BAD floorplan,Intro to library cells
                        
-    i)FLOORPLAN run using OPENLANE flow
+i)FLOORPLAN run using OPENLANE flow
     
 #To invoke openlane flow use command docker
 
@@ -127,11 +128,16 @@ Flop Ratio=(No.of D-FF/No.of cells)*100
  
  ![image](https://github.com/user-attachments/assets/fb9e4218-7a9f-4057-84b8-31480a508de5)
   
-  Fom def
+Fom def
+
    1000 unit distance=1 micron
+   
    Die width=660685/1000=660.685 microns
+   
    Die height=671405/1000=671.405 microns
+   
    Die area=660.685*671.405=443587.212 microns square
+   
 iii)Magic tool to visualize floorplan using floorplan def file
 
 #Command to set the directory to run magic toolc
@@ -143,6 +149,7 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
     magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
     
     Screen shot of Floorplan def in Magic tool
+    
   ![image](https://github.com/user-attachments/assets/e0eacc86-7407-4e78-9e6d-63b109647c87)
     Decap cells
     ![image](https://github.com/user-attachments/assets/8c6f9492-976d-4788-ae14-0a4e387a773f)
@@ -150,13 +157,19 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
     ![image](https://github.com/user-attachments/assets/cc4c03d6-2a55-4fb7-8482-18ca16fd6e12)
     Standard cells unplaced present at bootom left corner
     ![image](https://github.com/user-attachments/assets/9a3193e0-85f1-4a35-af0c-e433d1d14ace)
+   
     After floorplan step is completed,next step is placement
+    
     It consists of 2 stages 
+    
     1.Global placement 
+    
     2.Deatailed placement
+    
     #Command for placement run in openlane flow
     
     run_placement
+    
    ![image](https://github.com/user-attachments/assets/d8acc91e-f91d-4315-9202-bb3aec0ca737)
 
    ![image](https://github.com/user-attachments/assets/682e47d4-4b29-464b-910c-de18e66671bb)
@@ -176,15 +189,15 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03
   ![image](https://github.com/user-attachments/assets/41e84a87-a1f0-4749-be40-83c861d967b3)
 
   
-          DAY-3-Design library cell using magic and ngspice
+DAY-3-Design library cell using magic and ngspice
                   
-    SPICEDECK creation for CMOS Inverter
+SPICEDECK creation for CMOS Inverter
       
 ![image](https://github.com/user-attachments/assets/c7e7fb1a-4011-46b0-a3a4-eeab833247b1)
 ![image](https://github.com/user-attachments/assets/b47ab06d-ec33-414b-a3e5-1e9870875068)
 
 
-  i)Cloning std cell design from github repository
+i)Cloning std cell design from github repository
   
       # Change directory to openlane
       
@@ -237,10 +250,10 @@ ii)Inverter spice extraction from magic
 
 iii)ngspice simulation
 
-    1-Rise time:The time taken for the output waveform to transition from 20% to 80% of its maximum value.
-    2-Fall time:The time taken for the output waveform to transition from 80% to 20% of its maximum value
-    3-Cell Rise delay:The time taken for a 50% transition at the output (0 to 1) corresponding to a 50% transition at the input (1 to 0).
-    4-Cell fall delay:The time taken for a 50% transition at the output (1 to 0) corresponding to a 50% transition at the input (0 to 1).
+1-Rise time:The time taken for the output waveform to transition from 20% to 80% of its maximum value.
+2-Fall time:The time taken for the output waveform to transition from 80% to 20% of its maximum value
+3-Cell Rise delay:The time taken for a 50% transition at the output (0 to 1) corresponding to a 50% transition at the input (1 to 0).
+4-Cell fall delay:The time taken for a 50% transition at the output (1 to 0) corresponding to a 50% transition at the input (0 to 1).
     
 #Command for loading spice file in ngspice simulation
 
@@ -308,15 +321,17 @@ magic -d XR &
                       DAY-4 -Pre layout timing analysis and importance of Good clock tree
 
 i)Delay tables,Timing analysis and CTS
-      Delay tables
-         At each level,Each node dricing same amound of load otherwise skew will be introduced into the network.
-Identical buffers need to be used at same level.
-      output transition of a cell is the function of input transition+output capacitace.
 
-  Timing modelling using delay tables
+Delay tables
+        
+At each level,Each node dricing same amound of load otherwise skew will be introduced into the network.
+Identical buffers need to be used at same level.output transition of a cell is the function of input transition+output capacitace.
+
+Timing modelling using delay tables
   
-       Converting grid information like rows and columns into track information is important.when designing standard cells,it is important to ensure that input and output ports aligned with intersections of horizontal and vertical tracks.
-      Standard cells width should be odd multiples of horizontal track pitch,height should be odd multiples of vertical track pitch.LEF file provides necessary information for the PNR flow process.tracks.info file contains horizontal and vertical tracks metal layer information.I t contains pitch,spacing data which are used for routing stage.
+Converting grid information like rows and columns into track information is important.when designing standard cells,it is important to ensure that input and output ports aligned with intersections of horizontal and vertical tracks.
+
+Standard cells width should be odd multiples of horizontal track pitch,height should be odd multiples of vertical track pitch.LEF file provides necessary information for the PNR flow process.tracks.info file contains horizontal and vertical tracks metal layer information.I t contains pitch,spacing data which are used for routing stage.
      
 ![image](https://github.com/user-attachments/assets/b287ba17-369f-4de3-9ff8-f4801318c423)
 ![image](https://github.com/user-attachments/assets/b4b218c3-762c-4afc-ba16-e50c8298848e)
@@ -329,8 +344,11 @@ Identical buffers need to be used at same level.
 ![image](https://github.com/user-attachments/assets/31bf6c81-3559-4700-adf6-e92e56e60536)
 
 i)Conditions for to inclde our custom design in picorv32a design
+
   1-Input&output ports should be lie on the intersection of horizontal and vertical tracks
-  2-Height of standard cell is even multiples of vertical track pitch
+  
+  2-Height of standard cell is even multiples of vertical track pitch.
+  
   3-Width of standard cell is odd multiples of horizontal track pitch.
 
   #change working directory to vsdstdcelldesign direcory
@@ -391,6 +409,7 @@ set lefs [glob $::env(DESIGN_DIR)/src/*.lef
 add_lefs -src $lefs
 
 #Command for running synthesis 
+
 run_synthesis
 
 ![image](https://github.com/user-attachments/assets/b8836729-9d58-4d47-805f-aa40e7cd508e)
@@ -447,6 +466,7 @@ echo $::env(SYNTH_DRIVING_CELL)
 run_synthesis
 
 Screenshot of merged.lef in tmp directory
+
 ![image](https://github.com/user-attachments/assets/d98a44de-1a03-4617-8b05-78d31e5a2d77)
 ![image](https://github.com/user-attachments/assets/49da2720-dc6c-4f2c-a885-9f9c4f04ebed)
 ![image](https://github.com/user-attachments/assets/0649dab7-9e5c-44bd-a187-28429b0b1cd6)
@@ -479,9 +499,10 @@ Commands to load placement def in magic
 ![image](https://github.com/user-attachments/assets/b45948c0-aa3b-490c-99b5-a6dedebfac3f)
 
 v)Post_synthesis timing analysis with openSTA tool
-      Present wns,tns are 0.
 
-     For static timing analysis, in openlane directory Created pre_sta.conf file
+Present wns,tns are 0.
+
+For static timing analysis, in openlane directory Created pre_sta.conf file
      
    ![image](https://github.com/user-attachments/assets/7b06975a-03f0-40c3-b152-511ca4683a73)
    
@@ -489,7 +510,7 @@ v)Post_synthesis timing analysis with openSTA tool
    
    ![image](https://github.com/user-attachments/assets/cfdbd871-4b4b-4975-a6d6-dbe52e985f8d)
 
-  #Change directory to openlane
+ #Change directory to openlane
   
 cd Desktop/work/tools/openlane_working_dir/openlane
 
@@ -505,17 +526,20 @@ sta pre_sta.conf
 ![image](https://github.com/user-attachments/assets/0988b0e4-cf3e-46f4-8eeb-8bed793c408b)
 
 
-    Due to more fanout value causing more delay,here we reduce the max fanout by using the following commands
+Due to more fanout value causing more delay,here we reduce the max fanout by using the following commands
     
 vi)ECO timing fixing for clear all violations
 
 #Report for particular connections for a net
+
 report_net -connections _netnumber_
 
 #Command for Replacing a particular cell
+
 replace_cell _driverpin number_ sky130_fd_sc_hd__gate name with size
 
 #Timing report check
+
 report_checks -fields {net cap slew input_pins} -digits 4
 
   ![image](https://github.com/user-attachments/assets/bce04dc6-968c-47ef-97be-3ada30768a25)
@@ -525,10 +549,11 @@ report_checks -fields {net cap slew input_pins} -digits 4
 ![image](https://github.com/user-attachments/assets/a8729cb9-6e11-4834-9438-6593a7c9ba49)
 ![image](https://github.com/user-attachments/assets/fde43744-7223-4e13-afc0-2d70d8fe6193)
  
-       Eco fix started when wns is 23.89 now it comes down to 22.823 by replacing some of the driver cells by upsizing based on the load connected to that particular net.
+Eco fix started when wns is 23.89 now it comes down to 22.823 by replacing some of the driver cells by upsizing based on the load connected to that particular net.
        
 vii)replace old netlist with new netlist and do the PnR flow
-      First we need to copy the old netlist.To replace old netlist with new netlist to PnR flow,use write_verilog command
+
+First we need to copy the old netlist.To replace old netlist with new netlist to PnR flow,use write_verilog command
 
 ![image](https://github.com/user-attachments/assets/003ab086-d012-4661-bfb3-0115e9e5bb0b)
 
@@ -539,7 +564,7 @@ write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/des
 
 ![image](https://github.com/user-attachments/assets/45b6d8a0-37b1-4345-a585-b959d1addec9)
 
-      It is confirmed that the old netlist is replaced by the updated netlist based on the _13161_ cell updation.
+It is confirmed that the old netlist is replaced by the updated netlist based on the _13161_ cell updation.
 
     #Command for running cts
     run_cts
@@ -549,6 +574,7 @@ write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/des
 viii)Post CTS timing analysis using OpenRoad
 
 Screenshots of timing reports
+
 ![image](https://github.com/user-attachments/assets/11287fa4-a276-4fdf-a4a7-a6560f4303df)
 ![image](https://github.com/user-attachments/assets/a431d464-60a2-4d51-88ba-282cf3383494)
 ![image](https://github.com/user-attachments/assets/82f2adbe-b291-4e09-a4fe-eb98a451d941)
@@ -590,6 +616,7 @@ echo $::env(ROUTING_STRATEGY)
 run_routing
 
 Screenshots of routing stage
+
 ![image](https://github.com/user-attachments/assets/4158b6b2-f0c6-4629-904b-115c99eb75e7)
 ![image](https://github.com/user-attachments/assets/decc4c08-f21f-4039-b4a6-862745b6da9e)
 
