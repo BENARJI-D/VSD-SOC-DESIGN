@@ -327,6 +327,8 @@ plot y vs time a
 ![image](https://github.com/user-attachments/assets/31d2c887-671a-495a-939a-83e46bed4bf7)
 ![image](https://github.com/user-attachments/assets/706cc34f-ddeb-42c5-b407-e3ab54edfdc9)
 
+50% of 3.3v=1.65 v,input and output waveforms need to measure time at 1.65v for calculating rise and fall delays.
+
 Rise cell delay=148ps
 
 Fall cell delay=71ps
